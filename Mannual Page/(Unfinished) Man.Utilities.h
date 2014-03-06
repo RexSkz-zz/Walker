@@ -11,7 +11,7 @@ inline double Rint(const double & x);
 inline double Sqr(const double & x);
 // 平方根
 // 这里原本有个_FAST_SQRT的宏，如果定义了它，则进入快速
-// 平方根模式，四倍于std::sqrt的速度，精度为1e-4
+// 平方根模式，四倍于sqrt的速度，精度为1e-4
 // 不过不用纠结这个了
 inline double Sqrt(const double x);
 // 最大值和最小值
@@ -69,7 +69,6 @@ inline double SumInfGeomSeries(const double & first_term, const double & r);
 inline double drand(double low, double high);
 /**
  * 下面四个函数都是得到系统时间，但用的地方不同，一定要注意
- *
  * GetRealTime()用在动态调试时不会经过的地方，即下面3个函数不能用的地方
  * GetRealTimeParser()用在Parser::Parse()及其调用的所有函数中
  * GetRealTimeDecision()用在Player::Decision()及其调用的所有函数中
@@ -80,95 +79,46 @@ timeval GetRealTimeParser();
 timeval GetRealTimeDecision();
 timeval GetRealTimeCommandSend();
 
-/**
- * 安全数组，Debug版本会检查越界访问
- * _Tp 数据域类型
- * _Nm 数组大小
- * _Zero 标记是否在构造函数内清零
- */
-template<typename _Tp, std::size_t _Nm, bool _Zero = false>
-class Array
-{
+// 安全数组类，Debug版本会检查越界访问
+// _Tp:		数据域类型
+// _Nm:		数组大小
+// _Zero:	是否需要在构造函数内清零
+template<typename _Tp, size_t _Nm, bool _Zero = false> class Array{
+	// 该类的实例
 	_Tp _M_instance[_Nm ? _Nm : 1];
-
 public:
-	Array() {
-		if (_Zero) {
-			bzero();
-		}
-	}
-
-	Array(const _Tp & x) {
-		fill(x);
-	}
-
-	_Tp &
-	operator[](const std::size_t & i) {
-		Assert(i < _Nm);
-		return _M_instance[i];
-	}
-
-	const _Tp &
-	operator[](const std::size_t & i) const  {
-		Assert(i < _Nm);
-		return _M_instance[i];
-    }
-
-	void bzero() {
-		memset(_M_instance, 0, sizeof(_M_instance));
-	}
-
-	void fill(const _Tp & x) {
-		std::fill(_M_instance, _M_instance + (_Nm ? _Nm : 1), x);
-	}
-
-	template<typename _Function>
-	_Function
-	for_each(_Function f) {
-		return std::for_each(_M_instance, _M_instance + (_Nm ? _Nm : 1), f);
-	}
-
-	_Tp * instance() {
-		return _M_instance;
-	}
+	Array();
+	// 在构造函数中将元素填充为x
+	Array(const _Tp & x);
+	// 获取第i个元素
+	_Tp & operator[](const size_t & i);
+	const _Tp & operator[](const size_t & i);
+	// 将数组清零
+	void bzero();
+	// 填充数组为x
+	void fill(const _Tp & x);
+	// 意义不明
+	template<typename _Function> _Function for_each(_Function f);
+	// 唯一实例
+	_Tp * instance();
 };
 
-/**
- * 球员相关数组，有效下标：1..TEAMSIZE
- */
-template <typename _Tp, bool _Zero = false>
-class PlayerArray
-{
+// 球员相关数组，有效下标：1..TEAMSIZE
+template <typename _Tp, bool _Zero = false> class PlayerArray{
 	Array<_Tp, TEAMSIZE, _Zero> _M_array;
-
 public:
-	void bzero() {
-		_M_array.bzero();
-	}
-
-	void fill(const _Tp & x) {
-		_M_array.fill(x);
-	}
-
-	template<typename _Function>
-	_Function
-	for_each(_Function f) {
-		return _M_array.for_each(f);
-	}
-
-	_Tp &	operator[](const Unum & i) {
-		return _M_array[i - 1];
-	}
-
-	const _Tp & operator[](const Unum & i) const {
-		return _M_array[i - 1];
-	}
+	// 清零
+	void bzero();
+	// 填充
+	void fill(const _Tp & x);
+	// 意义不明
+	template<typename _Function> _Function for_each(_Function f);
+	// 获取第i个元素
+	_Tp & operator[](const Unum & i);
+	const _Tp & operator[](const Unum & i);
 };
 
-/**
- * 存放关于场上对象（球员和球）数据的数组
- * 有效下标：-TEAMSIZE..TEAMSIZE
- */
+// 场上对象（球员和球）数组，有效下标：-TEAMSIZE..TEAMSIZE
 template <typename _Tp, bool _Zero = false>
 class ObjectArray
 {
@@ -254,7 +204,7 @@ public:
 	bool operator == (const RealTime &t) const;
 	bool operator != (const RealTime &t) const;
 
-	friend std::ostream & operator << (std::ostream &os, RealTime t);
+	friend ostream & operator << (ostream &os, RealTime t);
 
 private:
 	timeval mTime;
@@ -292,7 +242,7 @@ public:
 	bool operator>(const Time &a) const { return (mT > a.T()) || (mT == a.T() && mS > a.S()); }
 	bool operator>=(const Time &a) const { return (mT > a.T()) || (mT == a.T() && mS >= a.S()); }
 	bool operator!() const { return (mS == 0) && (mT == 0); }
-	friend std::ostream & operator<<(std::ostream & os, const Time& t) { return os << '(' << t.T() << ':' << t.S() << ')'; }
+	friend ostream & operator<<(ostream & os, const Time& t) { return os << '(' << t.T() << ':' << t.S() << ')'; }
 
 private:
 	int mT;
@@ -425,20 +375,20 @@ private:
 class ServerPlayModeMap {
 public:
 	static ServerPlayModeMap & instance();
-	ServerPlayMode GetServerPlayMode(const std::string & str);
+	ServerPlayMode GetServerPlayMode(const string & str);
 	const char * GetPlayModeString(ServerPlayMode spm);
 
 private:
 	ServerPlayModeMap();
-	void Bind(const std::string & str, ServerPlayMode spm);
+	void Bind(const string & str, ServerPlayMode spm);
 
 private:
-	std::map<std::string, ServerPlayMode> mString2Enum;
-	std::map<ServerPlayMode, std::string> mEnum2String;
+	map<string, ServerPlayMode> mString2Enum;
+	map<ServerPlayMode, string> mEnum2String;
 };
 
 
 template<class _Container, typename _Tp>
 bool has(const _Container & x, const _Tp & key) {
-	return std::find(x.begin(), x.end(), key) != x.end();
+	return find(x.begin(), x.end(), key) != x.end();
 }
