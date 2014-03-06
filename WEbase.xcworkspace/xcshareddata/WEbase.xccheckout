@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>99EF990F-FA40-4374-9F1F-BEBA344AE5DE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>WEbase</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>85CAE6A5-0B20-4EE8-8F86-B47E6EDDE9A3</key>
+		<string>https://github.com/RexSkz/Walker.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WEbase.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>85CAE6A5-0B20-4EE8-8F86-B47E6EDDE9A3</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/RexSkz/Walker.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>85CAE6A5-0B20-4EE8-8F86-B47E6EDDE9A3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>85CAE6A5-0B20-4EE8-8F86-B47E6EDDE9A3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Walker</string>
+		</dict>
+	</array>
+</dict>
+</plist>

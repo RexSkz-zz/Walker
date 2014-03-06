@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:src/WorldState.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/WorldState.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/WorldModel.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/WorldModel.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/VisualSystem.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/VisualSystem.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Utilities.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Utilities.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/UDPSocket.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/UDPSocket.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Types.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Types.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Trainer.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Trainer.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/TimeTest.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/TimeTest.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Thread.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Thread.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Tackler.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Tackler.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Strategy.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Strategy.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Simulator.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Simulator.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/ServerParam.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/ServerParam.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/PositionInfo.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/PositionInfo.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Plotter.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Plotter.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/PlayerState.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/PlayerState.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/PlayerParam.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/PlayerParam.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Player.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Player.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Parser.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Parser.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/ParamEngine.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/ParamEngine.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Observer.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Observer.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/NetworkTest.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/NetworkTest.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Net.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Net.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/main.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Logger.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Logger.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Kicker.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Kicker.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/InterceptModel.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/InterceptModel.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/InterceptInfo.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/InterceptInfo.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/InfoState.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/InfoState.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Geometry.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Geometry.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/FormationTactics.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/FormationTactics.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Formation.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Formation.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Evaluation.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Evaluation.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/DynamicDebug.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/DynamicDebug.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/DecisionTree.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/DecisionTree.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/DecisionData.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/DecisionData.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Dasher.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Dasher.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/CommunicateSystem.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/CommunicateSystem.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/CommandSender.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/CommandSender.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Coach.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Coach.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Client.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Client.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorShoot.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorShoot.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorSetplay.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorSetplay.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorPosition.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorPosition.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorPenalty.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorPenalty.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorPass.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorPass.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorMark.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorMark.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorIntercept.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorIntercept.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorHold.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorHold.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorGoalie.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorGoalie.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorFormation.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorFormation.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorDribble.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorDribble.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorDefense.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorDefense.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorBlock.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorBlock.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorBase.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorBase.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorAttack.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BehaviorAttack.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BasicCommand.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BasicCommand.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BaseState.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/BaseState.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/BallState.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Analyser.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Analyser.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/Agent.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/Agent.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:src/ActionEffector.h">
+   </FileRef>
+   <FileRef
+      location = "group:src/ActionEffector.cpp">
+   </FileRef>
+</Workspace>

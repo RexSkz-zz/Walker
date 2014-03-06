@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Mannual Page/Man.UDPSocket.h">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/Man.Thread.h">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/Man.Plotter.h">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/Man.ParamEngine.h">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/Man.Logger.h">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/Man.Geometry.h">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/(Unfinished) Man.Utilities.h">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/(Unfinished) Man.NetworkTest.h">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/(Unfinished) Man.Net.h">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/(Unfinished) Man.DynamicDebug.h">
+   </FileRef>
+</Workspace>
