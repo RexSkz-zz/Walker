@@ -119,130 +119,106 @@ public:
 };
 
 // 场上对象（球员和球）数组，有效下标：-TEAMSIZE..TEAMSIZE
-template <typename _Tp, bool _Zero = false>
-class ObjectArray
-{
-	Array<_Tp, 2 * TEAMSIZE + 1, _Zero> _M_array; //0:ball, 1...11:teammate, 12...22:opponent
-
+template <typename _Tp, bool _Zero = false> class ObjectArray{
+	//0：球；1-11：队友；12-22：对手
+	Array<_Tp, 2 * TEAMSIZE + 1, _Zero> _M_array;
 public:
-	void bzero() {
-		_M_array.bzero();
-	}
-
-	void fill(const _Tp & x) {
-		_M_array.fill(x);
-	}
-
-	_Tp &	operator[](const ObjectIndex & i /*-11...11*/ ) {
-		return i >= 0? _M_array[i]: _M_array[TEAMSIZE - i];
-	}
-
-	const _Tp & operator[](const ObjectIndex & i /*-11...11*/ ) const {
-		return i >= 0? _M_array[i]: _M_array[TEAMSIZE - i];
-	}
-
-	_Tp & GetOfBall() {
-		return (*this)[0];
-	}
-
-	const _Tp & GetOfBall() const {
-		return (*this)[0];
-	}
-
-	_Tp & GetOfObject(const ObjectIndex & i /*-11...11*/ ) {
-		return (*this)[i];
-	}
-
-	const _Tp & GetOfObject(const ObjectIndex & i /*-11...11*/ ) const {
-		return (*this)[i];
-	}
-
-	_Tp & GetOfTeammate(const ObjectIndex & i /*1...11*/ ) {
-		Assert(i > 0);
-		return (*this)[i];
-	}
-
-	const _Tp & GetOfTeammate(const ObjectIndex & i /*1...11*/ ) const {
-		Assert(i > 0);
-		return (*this)[i];
-	}
-
-	_Tp & GetOfOpponent(const ObjectIndex & i /*1...11*/ ) {
-		Assert(i > 0);
-		return (*this)[-i];
-	}
-
-	const _Tp & GetOfOpponent(const ObjectIndex & i /*1...11*/ ) const {
-		Assert(i > 0);
-		return (*this)[-i];
-	}
+	// 清零
+	void bzero();
+	// 填充
+	void fill(const _Tp & x);
+	// 获取第i个元素（下标i的范围是-11至11）
+	_Tp & operator[](const ObjectIndex & i);
+	const _Tp & operator[](const ObjectIndex & i);
+	// 获得代表球的元素
+	_Tp & GetOfBall();
+	const _Tp & GetOfBall();
+	// 获得物品（等价于方括号）
+	_Tp & GetOfObject(const ObjectIndex & i);
+	const _Tp & GetOfObject(const ObjectIndex & i);
+	// 获得第i号队友（下标i的范围是1至11）
+	_Tp & GetOfTeammate(const ObjectIndex & i);
+	const _Tp & GetOfTeammate(const ObjectIndex & i);
+	// 获得第i号对手（下标i的范围是1至11）
+	_Tp & GetOfOpponent(const ObjectIndex & i);
+	const _Tp & GetOfOpponent(const ObjectIndex & i);
 };
 
-class RealTime
-{
+// 封装好的timeval类
+class RealTime{
 public:
-	explicit RealTime(long tv_sec = 0, long tv_usec = 0) {
-		mTime.tv_sec = tv_sec;
-		mTime.tv_usec = tv_usec;
-	}
-
+	// 通过秒数和微秒数来初始化
+	// tv_sec:	秒数
+	// tv_usec:	微秒数
+	explicit RealTime(long tv_sec = 0, long tv_usec = 0);
+	// 通过timeval类型来初始化
 	RealTime(const timeval &t): mTime(t) { }
-
-	timeval GetTime() const { return mTime; }
-	long GetSec() const { return mTime.tv_sec; }
-	long GetUsec() const { return mTime.tv_usec; }
-
-	const RealTime & operator = (const timeval &t) { mTime = t; return *this; }
-	RealTime operator + (const RealTime &t) const;
-	RealTime operator + (int msec) const;
-	RealTime operator - (int msec) const;
-	int operator - (const RealTime &t) const;
-	long Sub( const RealTime &t);
-
-	bool operator < (const RealTime &t) const;
-	bool operator > (const RealTime &t) const;
-	bool operator == (const RealTime &t) const;
-	bool operator != (const RealTime &t) const;
-
+	// 返回当前对象代表的timeval类型的值
+	timeval GetTime();
+	// 返回秒数和微秒数
+	long GetSec();
+	long GetUsec();
+	// 赋值、两种加减法
+	const RealTime & operator=(const timeval &t);
+	RealTime operator+(const RealTime &t);
+	RealTime operator+(int msec);
+	RealTime operator-(int msec);
+	int operator-(const RealTime &t);
+	long Sub(const RealTime &t);
+	// 比较运算符
+	bool operator<(const RealTime &t);
+	bool operator>(const RealTime &t);
+	bool operator==(const RealTime &t);
+	bool operator!=(const RealTime &t);
+	// 输出总共经过的时间（不是当前时间）
 	friend ostream & operator << (ostream &os, RealTime t);
-
 private:
+	// 该类存储的时间
 	timeval mTime;
-
+	// 起始时间
 	static timeval mStartTime;
+	// 一百万单位（微秒换算成秒）
 	static const long ONE_MILLION;
 };
 
-class Time
-{
+// 存储时间的类
+class Time{
 public:
-	explicit Time(int t = -3, int s = 0): mT(t), mS(s) {}
-
-	int T() const { return mT; }
-	int S() const { return mS; }
-	void SetT(int t) { mT = t; }
-	void SetS(int s) { mS = s; }
-
-	const Time & operator=(const int a) { mT = a;  mS = 0; return *this; }
-	Time operator+(const int a) const { return Time(mT + a, 0); }
+	// 初始化时间
+	// t:	当前一轮比赛运行时间
+	// s:	当前一轮比赛暂停时间
+	explicit Time(int t = -3, int s = 0);
+	// 各种getter和setter
+	int T();
+	int S();
+	void SetT(int t);
+	void SetS(int s);
+	// 简单地赋值
+	const Time & operator=(const int a);
+	// 增加比赛的运行时间
+	Time operator+(const int a);
+	// 减少比赛的暂停时间，若a大于当前暂停时间则差量的绝对值
+	// 将会加到当前运行时间中
 	Time operator-(const int a) const;
 	int operator-(const Time &a) const;
-
-	void operator+=(const int a) { *this = *this + a; }
-	void operator-=(const int a) { *this = *this - a; }
-	void operator-=(const Time &a) { *this = *this - a; }
-	const Time & operator++() { *this += 1; return *this; }
-	const Time & operator--() { *this -= 1; return *this; }
-	int operator%(const int a) const { return (mT + mS) % a; }
-
-	bool operator==(const Time &a) const { return (mS == a.S()) && (mT == a.T()); }
-	bool operator!=(const Time &a) const { return (mS != a.S()) || (mT != a.T()); }
-	bool operator<(const Time &a) const { return (mT < a.T()) || (mT == a.T() && mS < a.S()); }
-	bool operator<=(const Time &a) const { return (mT < a.T()) || ( mT == a.T() && mS <= a.S()); }
-	bool operator>(const Time &a) const { return (mT > a.T()) || (mT == a.T() && mS > a.S()); }
-	bool operator>=(const Time &a) const { return (mT > a.T()) || (mT == a.T() && mS >= a.S()); }
+	// 各种单目运算符
+	void operator+=(const int a);
+	void operator-=(const int a);
+	void operator-=(const Time &a);
+	const Time & operator++();
+	const Time & operator--();
+	// 理解不能
+	int operator%(const int a);
+	// 各种比较运算符
+	bool operator==(const Time &a);
+	bool operator!=(const Time &a);
+	bool operator<(const Time &a);
+	bool operator<=(const Time &a);
+	bool operator>(const Time &a);
+	bool operator>=(const Time &a);
 	bool operator!() const { return (mS == 0) && (mT == 0); }
-	friend ostream & operator<<(ostream & os, const Time& t) { return os << '(' << t.T() << ':' << t.S() << ')'; }
+	// 输出格式：(比赛运行时间:比赛暂停时间)
+	friend ostream & operator<<(ostream & os, const Time& t);
 
 private:
 	int mT;
