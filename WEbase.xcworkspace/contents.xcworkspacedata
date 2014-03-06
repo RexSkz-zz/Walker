@@ -113,6 +113,30 @@
       location = "group:src/Parser.h">
    </FileRef>
    <FileRef
+      location = "group:Mannual Page/Man.UDPSocket.h">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/Man.Thread.h">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/Man.Plotter.h">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/Man.ParamEngine.h">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/Man.Observer.h">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/Man.Observer.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/Man.Logger.h">
+   </FileRef>
+   <FileRef
+      location = "group:Mannual Page/Man.Geometry.h">
+   </FileRef>
+   <FileRef
       location = "group:src/Parser.cpp">
    </FileRef>
    <FileRef
