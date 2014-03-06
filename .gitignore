@@ -1,0 +1,9 @@
+Debug/src/*.o
+Debug/src/*.d
+Debug/Walker
+Release/src/*.o
+Release/src/*.d
+Release/Walker
+src/*\~
+*\~
+Logfiles/*
