@@ -6,4 +6,5 @@ Release/src/*.d
 Release/Walker
 src/*\~
 *\~
+*.bak
 Logfiles/*
