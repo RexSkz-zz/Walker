@@ -219,16 +219,13 @@ public:
 	bool operator!() const { return (mS == 0) && (mT == 0); }
 	// 输出格式：(比赛运行时间:比赛暂停时间)
 	friend ostream & operator<<(ostream & os, const Time& t);
-
 private:
+	// 比赛运行时间和暂停时间
 	int mT;
 	int mS;
 };
 
-
-/**
- * bellow is parse utilities
- */
+// bellow is parse utilities
 namespace parser {
 inline double get_double(char **str_ptr){
 	while (!isdigit(**str_ptr) && **str_ptr != '-' && **str_ptr != '+' && **str_ptr != '.' && **str_ptr) (*str_ptr)++;
