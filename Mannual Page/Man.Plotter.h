@@ -31,7 +31,7 @@ private:
 	void Close();
 private:
 	bool mIsDisplayOk;	// 是否显示完毕
-	bool mIsGnuplotOk;	// 没找到引用，意义不明
+	/*bool mIsGnuplotOk;	// 没找到引用，意义不明*/
 	FILE *mpGnupolot;	// 往这里写入东西相当于给GNUPlot传送命令
 private:
 	// 最大命令长度

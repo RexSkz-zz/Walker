@@ -99,7 +99,7 @@ public:
 	// return:	若点在顺时针
 	bool IsInRightDir(const Vector & point);
 	// 判断点是否在射线上（未找到引用，意义不明）
-	bool OnRay(const Vector& point, const double & buffer = FLOAT_EPS);
+	/*bool OnRay(const Vector& point, const double & buffer = FLOAT_EPS);*/
 	// 该射线与另一直线或射线的交点信息
 	// l:					另一条直线
 	// r:					另一条射线
@@ -148,8 +148,8 @@ public:
 	bool IsOnLine(const Vector & point, const double & buffer = FLOAT_EPS);
 	// 判断点是否在直线上方
 	bool IsUpLine(const Vector & point);
-	// （未找到引用，意义不明）
-	bool HalfPlaneTest(const Vector & pt);
+	// 未找到引用，意义不明
+	/*bool HalfPlaneTest(const Vector & pt);*/
 	// 判断该直线与另一直线斜率是否相等
 	bool IsSameSlope(const Line & l, const double & buffer = FLOAT_EPS);
 	// 判断一点的垂足是否在两点之间
@@ -183,8 +183,8 @@ public:
 	// end2:	直线上另一点
 	// return:	直线上两点间距离原始点最近的点
 	Vector GetClosestPointInBetween(const Vector & pt, const Vector & end1, const Vector & end2);
-	// （未找到引用，意义不明）
-	void LineFromPline(const Vector & pos1, const Vector & pos2);
+	// 未找到引用，意义不明
+	/*void LineFromPline(const Vector & pos1, const Vector & pos2);*/
 	// 取得直线的三个参数
 	const double & GetA();
 	const double & GetB();

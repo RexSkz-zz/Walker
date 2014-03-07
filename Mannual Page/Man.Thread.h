@@ -53,8 +53,8 @@ public:
     // 将线程加入程序进程
 	void Join();
 private:
-    // 该类的入口（没有在别的地方调用过，意义不明）
-	static void *Spawner(void *v);
+    // 该类的入口（未找到引用，意义不明）
+	/*static void *Spawner(void *v);*/
     // 开始主循环，在子类中被重写（在Spawner中被执行）
 	virtual void StartRoutine() = 0;
 };

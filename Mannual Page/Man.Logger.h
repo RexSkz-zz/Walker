@@ -123,8 +123,8 @@ private:
 		// 两个点的坐标
 		double x1, y1;
 		double x2, y2;
-		// 没找到其它引用，意义不明
-		int width;
+		// 未找到引用，意义不明
+		/*int width;*/
 		// 确定一条直线的信息
 		// from:	出发点
 		// to:		目标点
