@@ -247,6 +247,11 @@ public:
 //======================================================================================================================
 /**
 * 球员自己的sense观察类
+* 身体感知模型 sense_body
+* 耐力值 stamina
+* 恢复值 recovery
+* 力量值 effort 
+* 听力容量 hear capacity
 */
 class SenseObserver {
 	ViewWidth mViewWidth; //同步模式下忽略 ViewQuality
@@ -260,6 +265,12 @@ class SenseObserver {
 	AngleDeg  mNeckDir;
 
 	//counter
+    
+    /**
+     *counter变量是用来记录某种命令的执行次数，可以用来判断某种命令是否执行成功
+     *sever会在身体感知模型提供
+     */
+    
 	int       mKickCount;
 	int       mDashCount;
 	int       mTurnCount;
@@ -292,6 +303,9 @@ class SenseObserver {
 	int mFoulChargedCycle; //被铲倒的周期
 
 	//collision
+    /**
+     * 记录一些球员跟其他物体是否碰撞
+     */
 	bool mIsCollideWithPost;
 	bool mIsCollideWithPlayer;
 	bool mIsCollideWithBall;
@@ -409,6 +423,9 @@ public:
 
 	void SetCardType( CardType card_type ) { mCardType = card_type; }
 	void SetFoulChargedCycle( int x ) { mFoulChargedCycle = x; }
+    /**
+     * 把所有碰撞标记清除
+     */
 	void ClearCollisionState() { mIsCollideWithPost = false; mIsCollideWithPlayer = false; mIsCollideWithBall = false; }
 	void SetCollideWithPost() { mIsCollideWithPost = true; }
 	void SetCollideWithPlayer() { mIsCollideWithPlayer = true; }
@@ -541,6 +558,9 @@ public:
     void SetOurInitSide(char side) { mOurInitSide = side; }
 	void SetOurSide(char side) { mOurSide = side; mOppSide = (mOurSide == 'l'? 'r': 'l'); }
 	void SetSelfUnum(char unum) { mSelfUnum = unum; }
+    /**
+     *parser会用setcurrenttime设置时间
+     */
 	void SetCurrentTime(const Time & time) { mCurrentTime = time;	}
 	void SetPlayMode(PlayMode play_mode) { mPlayMode = play_mode; }
 	void SetKickOffMode(KickOffMode kickoffmode) {mKickOffMode = kickoffmode;}
@@ -593,7 +613,9 @@ public:
     // coach没有sense信息，设置只能通过ok信息
     const int & GetCoachSayCount() const { return mSenseObserver.GetSayCount(); }
     void SetCoachSayCount(const int count) { mSenseObserver.SetSayCount(count); }
-
+    /**
+     * 这些碰撞信息都是直接调用了senseobserver的对应的函数
+     */
 	void ClearCollisionState() { mSenseObserver.ClearCollisionState(); }
 	void SetCollideWithPost() { mSenseObserver.SetCollideWithPost(); }
 	void SetCollideWithPlayer() { mSenseObserver.SetCollideWithPlayer(); }
@@ -606,6 +628,9 @@ public:
 
 	//同步模式下只有高质量的视觉，所以不存在只看到角度看不到距离的情况
 	//看到的时间，都默认 mCurrentTime
+    /**
+     *提供给parse的接口
+     */
 	void SeeLine  (SideLineType line, double dist, double dir);
 
 	void SeeMarker(MarkerType marker, double dist, double dir);
@@ -635,6 +660,9 @@ public:
 	const char & OurSide() const { return mOurSide; }
 	const char & OppSide() const { return mOppSide; }
 
+    /**
+     *世界模型经常调用的CurrentTime()是在这里声明的？
+     */
 	const Time & CurrentTime() const { return mCurrentTime; }
 	const Time & LatestSightTime() const { return mLatestSightTime; }
 	void SetLatestSightTime(const Time & time) { mLatestSightTime = time; }
@@ -673,6 +701,9 @@ public:
 	void SetNewOppType(bool NewOppType) {mIsNewOppType = NewOppType; }
 
 private:
+    /**
+     *大概整个程序的time都是以下面这个time变量为准？
+     */
 	Time mCurrentTime;							//当前时间
 	Time mLatestSightTime;                      //收到最新视觉的时间，在等漏视觉的情况下，比mCurrentTime小
 
@@ -722,8 +753,9 @@ private:
 	void AdjustUnum(char side , Unum unum);
 
 public:
-	/*
+	/**
 	 * synch with parser thread
+     * 与parse协作的部分 主要是一些多线程的实现层面的技巧
 	 */
 	bool WaitForNewInfo();
 	bool WaitForNewSense();
