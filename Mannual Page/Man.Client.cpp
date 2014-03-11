@@ -50,6 +50,10 @@
 #include "InterceptModel.h"
 #include "Plotter.h"
 
+/**
+ * 构造函数创建了一堆instance和cmdsender parser线程
+ * 创建了observer 和 worldmodel实例
+ */
 Client::Client() {
 	srand(time(0)); //global srand once
 	srand48(time(0));
@@ -98,7 +102,7 @@ Client::Client() {
 }
 
 Client::~Client()
-{  
+{
 	delete mpCommandSender;
 	delete mpParser;
 
@@ -106,7 +110,9 @@ Client::~Client()
 	delete mpWorldModel;
 	delete mpAgent;
 }
-
+/**
+ * 没看
+ */
 void Client::RunDynamicDebug()
 {
 	static char msg[MAX_MESSAGE];
@@ -148,7 +154,13 @@ void Client::RunDynamicDebug()
 		}
 	}
 }
-
+/**
+ * 先启动cmdsender和parser线程
+ * 等待parser连接server （如果失败的话 在shell现实）
+ * 创建agent
+ * 进入主循环
+ * 向shell现实结束的信息
+ */
 void Client::RunNormal()
 {
 
@@ -184,19 +196,22 @@ void Client::RunNormal()
     }
 }
 
+/**
+ * 用observer提取到的自己的信息向 [ worldmodel添加信息 (这部分是猜的)] 并创建Agent实例
+ */
 void Client::ConstructAgent()
 {
 	Assert(mpAgent == 0);
-	if (mpObserver->SelfUnum() > 0 && mpObserver->SelfUnum() < TRAINER_UNUM) 
+	if (mpObserver->SelfUnum() > 0 && mpObserver->SelfUnum() < TRAINER_UNUM)
 	{
 		mpWorldModel->World(false).Teammate(mpObserver->SelfUnum()).SetIsAlive(true);
 		std::cout << "WrightEagle 2012: constructing agent for player " << mpObserver->SelfUnum() << "..." << std::endl;
 	}
-	else if (mpObserver->SelfUnum() == TRAINER_UNUM) 
+	else if (mpObserver->SelfUnum() == TRAINER_UNUM)
 	{
         	std::cout << "WrightEagle 2012: constructing agent for trainer... " <<  std::endl;
 	}
-    	else 
+    	else
 	{
         	std::cout << "WrightEagle 2012: constructing agent for coach..." << std::endl;
    	 }
@@ -208,6 +223,9 @@ void Client::ConstructAgent()
 	VisualSystem::instance().Initial(mpAgent);
 }
 
+/**
+ * observer等待视觉->run->observer标记为Plan过并且唤醒cmdsender线程
+ */
 void Client::MainLoop()
 {
 	while (mpObserver->WaitForNewInfo()) // 等待新视觉
